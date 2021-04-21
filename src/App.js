@@ -1,24 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import * as React from "react";
+import { Admin, Resource, ListGuesser } from 'react-admin';
+import jsonapiClient from "ra-jsonapi-client";
+import { DialogNodeList } from "./dialog-nodes";
+import { IntentList } from './intents';
 
-function App() {
+const dataProvider = jsonapiClient('http://localhost:3000/api/admin', {
+  total: 'total-count',
+});
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Admin dataProvider={dataProvider}>
+      <Resource name='dialog-nodes' list={DialogNodeList} />
+      <Resource name='intents' list={IntentList} />
+    </Admin>
   );
 }
 
