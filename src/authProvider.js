@@ -1,8 +1,12 @@
+import config from './config';
+
+
+const LOCAL_AUTH_KEY = 'authToken';
 
 
 export default {
   login: ({ username, password }) => {
-    const request = new Request('http://localhost:3001/api/admin/users/auth', {
+    const request = new Request(`${config.api.baseUrl}/users/auth`, {
       method: 'POST',
       body: JSON.stringify({ username, password }),
       headers: new Headers({ 'Content-Type': 'application/json' }),
@@ -10,29 +14,28 @@ export default {
     return fetch(request)
       .then(response => {
         if (response.status < 200 || response.status >= 300) {
-          // throw new Error('Incorrect username or password');
           return Promise.reject();
         }
         return response.json();
       })
       .then(auth => {
-        localStorage.setItem('authToken', JSON.stringify(auth.token));
+        localStorage.setItem(LOCAL_AUTH_KEY, JSON.stringify(auth.token));
         return Promise.resolve();
       });
   },
   logout: () => {
-    localStorage.removeItem('authToken');
+    localStorage.removeItem(LOCAL_AUTH_KEY);
     return Promise.resolve();
   },
   checkError: ({ status }) => {
     if (status === 401 || status === 403) {
-      localStorage.removeItem('authToken');
+      localStorage.removeItem(LOCAL_AUTH_KEY);
       return Promise.reject();
     }
     return Promise.resolve();
   },
   checkAuth: () => {
-    return localStorage.getItem('authToken')
+    return localStorage.getItem(LOCAL_AUTH_KEY)
       ? Promise.resolve()
       : Promise.reject();
   },

@@ -1,5 +1,6 @@
 import React from "react";
 import { createMuiTheme } from '@material-ui/core/styles';
+import config from './config';
 import simpleRestProvider from 'ra-data-simple-rest';
 import authProvider from './authProvider';
 import i18nMessages from './i18n/i18nMessages';
@@ -29,14 +30,14 @@ const httpClient = (url, options = {}) => {
   if (!options.headers) {
       options.headers = new Headers({ Accept: 'application/json' });
   }
-  const auth = JSON.parse(localStorage.getItem('auth'));
-  if (auth && auth.token) {
-    options.headers.set('Authorization', `Bearer ${auth.token}`);
+  const token = JSON.parse(localStorage.getItem('authToken'));
+  if (token) {
+    options.headers.set('Authorization', `Bearer ${token}`);
   }
   return fetchUtils.fetchJson(url, options);
 };
 
-const dataProvider = simpleRestProvider('http://localhost:3001/api/admin', httpClient);
+const dataProvider = simpleRestProvider(`${config.api.baseUrl}/admin`, httpClient);
 
 const i18nProvider = polyglotI18nProvider(locale => 
   i18nMessages[locale], // get locale messages object
