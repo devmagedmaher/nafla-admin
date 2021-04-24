@@ -5,15 +5,10 @@ import {
   ReferenceInput,
   SelectInput,
   TextInput,
-  ArrayInput,
-  SimpleFormIterator,
-  AutocompleteArrayInput,
-  useTranslate,
 } from 'react-admin';
 
 
 const DialogNodeCreate = (props) => {
-  const translate = useTranslate();
 
 
   return (
@@ -24,7 +19,7 @@ const DialogNodeCreate = (props) => {
 
         <ReferenceInput
           source='conditions'
-          sort={{ field: 'updated' }}
+          sort={{ field: 'updated', order: 'DESC' }}
           reference="intents"
         >
           <SelectInput optionText='intent' optionValue='id' />

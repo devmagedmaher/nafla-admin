@@ -1,16 +1,8 @@
 import React from 'react';
 import {
-  List,
-  Datagrid,
-  TextField,
-  ReferenceField,
-  EditButton,
   Edit,
   SimpleForm,
-  ReferenceInput,
-  SelectInput,
   TextInput,
-  Create,
   SimpleFormIterator,
   ArrayInput,
 } from 'react-admin';
@@ -20,7 +12,11 @@ const DialogNodeEdit = (props) => {
 
   return (<>
     <Edit {...props}>
-      <SimpleForm>
+      <SimpleForm
+        submitOnEnter={false}
+        redirect={false}
+        warnWhenUnsavedChanges
+      >
         <TextInput source="intent" />
         <TextInput source="description" />
         <ArrayInput source="examples">

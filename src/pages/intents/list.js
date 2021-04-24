@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import {
   List,
   Datagrid,
   TextField,
   EditButton,
 } from 'react-admin';
+import TimeAgoField from '../../components/time-ago-field';
 
 
 const IntentList = props => {
@@ -13,13 +14,13 @@ const IntentList = props => {
   return (
     <List
       {...props}
-      title='Intents'
+      // title='Intents'
       sort={{ field: 'updated', order: 'DESC' }}
     >
       <Datagrid>
         <TextField source="intent" />
-        <TextField source="created" sortable={false} />
-        <TextField source="updated" />
+        <TimeAgoField source="created" sortable={false} />
+        <TimeAgoField source="updated" />
         <EditButton />
       </Datagrid>
     </List>

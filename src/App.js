@@ -5,7 +5,7 @@ import simpleRestProvider from 'ra-data-simple-rest';
 import authProvider from './authProvider';
 import i18nMessages from './i18n/i18nMessages';
 import polyglotI18nProvider from 'ra-i18n-polyglot';
-import { Admin, Resource, ListGuesser, fetchUtils } from 'react-admin';
+import { Admin, Resource, fetchUtils } from 'react-admin';
 import { DialogNodeList, DialogNodeEdit, DialogNodeCreate } from "./pages/dialog-nodes";
 import { IntentList, IntentEdit, IntentCreate } from './pages/intents';
 

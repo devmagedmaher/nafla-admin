@@ -4,7 +4,7 @@ import config from './config';
 const LOCAL_AUTH_KEY = 'authToken';
 
 
-export default {
+const authProvider = {
   login: ({ username, password }) => {
     const request = new Request(`${config.api.baseUrl}/users/auth`, {
       method: 'POST',
@@ -40,4 +40,7 @@ export default {
       : Promise.reject();
   },
   getPermissions: () => Promise.resolve(),
- }; 
+}
+
+
+export default authProvider;

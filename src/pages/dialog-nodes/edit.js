@@ -1,17 +1,10 @@
 import React from 'react';
 import {
-  List,
-  Datagrid,
-  TextField,
-  ReferenceField,
-  EditButton,
   Edit,
   SimpleForm,
   ReferenceInput,
   SelectInput,
   TextInput,
-  AutocompleteArrayInput,
-  SelectArrayInput,
   SimpleFormIterator,
   ArrayInput,
   useTranslate,
