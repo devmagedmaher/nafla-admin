@@ -4,23 +4,26 @@ import {
   Datagrid,
   TextField,
   EditButton,
+  SimpleList,
 } from 'react-admin';
+import { useMediaQuery } from '@material-ui/core';
 import TimeAgoField from '../../components/time-ago-field';
 
 
 const IntentList = props => {
-
+  const isSmall = useMediaQuery(theme => theme.breakpoints.down('sm'));
     
   return (
     <List
       {...props}
-      // title='Intents'
       sort={{ field: 'updated', order: 'DESC' }}
     >
-      <Datagrid>
+      <Datagrid rowClick='edit'>
         <TextField source="intent" />
-        <TimeAgoField source="created" sortable={false} />
-        <TimeAgoField source="updated" />
+        {!isSmall && [
+          <TimeAgoField source="created" sortable={false} />,
+          <TimeAgoField source="updated" />,
+        ]}
         <EditButton />
       </Datagrid>
     </List>

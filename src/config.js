@@ -1,13 +1,35 @@
 
 const isDev = process.env.NODE_ENV !== "production";
 
-export { isDev };
+const api = {
+  baseUrl: isDev ? 'http://192.168.1.97:3001/api' : 'https://nfla1-rest-api.herokuapp.com/api',
+};
 
+const locales = {
+    default: 'ar',
+    ar: {
+      name: 'العربية',
+    },
+    en: {
+      name: 'English',
+    }
+};
+
+
+export {
+
+  isDev,
+  api,
+  locales,
+
+}
 
 const config = {
-  api: {
-    baseUrl: isDev ? 'http://localhost:3001/api' : 'https://nfla1-rest-api.herokuapp.com/api',
-  }
+  
+  isDev,
+  api,
+  locales,
+
 }
 
 export default config;

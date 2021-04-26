@@ -1,6 +1,11 @@
 import englishMessages from 'ra-language-english';
 import arabicMessages from './arabicMessages';
 
+arabicMessages.pages = {
+  home: {
+    welcome_message: 'مرحبا بك في لوحة التحكم.',
+  },
+}
 
 arabicMessages.choices = {
   response_type: {

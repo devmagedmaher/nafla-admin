@@ -19,7 +19,7 @@ const authProvider = {
         return response.json();
       })
       .then(auth => {
-        localStorage.setItem(LOCAL_AUTH_KEY, JSON.stringify(auth.token));
+        localStorage.setItem(LOCAL_AUTH_KEY, auth.token);
         return Promise.resolve();
       });
   },
