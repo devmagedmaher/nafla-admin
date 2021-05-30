@@ -8,7 +8,6 @@ import {
 
 const IntentCreate = (props) => {
 
-
   return (
     <Create {...props}>
         <SimpleForm>

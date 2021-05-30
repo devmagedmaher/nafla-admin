@@ -3,15 +3,26 @@ import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import LanguageIcon from '@material-ui/icons/Language';
-import { locales } from './config';
-import { useSetLocale, useLocale, changeLocale } from 'react-admin';
-import changeDir from './utils/change-direction';
-import mapObjectToArray from './utils/map-object-to-array';
+
+import { locales } from '../constants/config';
+import { useSetLocale, useLocale } from 'react-admin';
+import setRootDirByLocale from '../utils/set-root-dir-by-locale';
+import mapObjectToArray from '../utils/map-object-to-array';
+
 
 const LanguageMenu = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const setLocale = useSetLocale();
   const currentLocale = useLocale();
+
+
+  useEffect(() => {
+    setRootDirByLocale(locales.default);
+  }, []);
+  
+  useEffect(() => {
+    console.log({ currentLocale });
+  }, [currentLocale]);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -23,9 +34,10 @@ const LanguageMenu = () => {
 
   const changeLanguage = (locale) => {
     setLocale(locale);
-    changeDir(locale);
+    setRootDirByLocale(locale);
     handleClose();
-  }
+  };
+
 
   return (
     <div style={{ color: 'inherit' }}>
@@ -50,5 +62,6 @@ const LanguageMenu = () => {
     </div>
   );
 }
+
 
 export default LanguageMenu;

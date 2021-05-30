@@ -1,55 +1,32 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
-import { useLocale, useRecordContext } from 'react-admin';
+import { FunctionField, useLocale, useRecordContext } from 'react-admin';
 import moment from 'moment';
 import 'moment/locale/ar';
 
 
 const TimeAgoField = ({ source, ...props }) => {
   const classes = useStyles();
-  const record = useRecordContext(props);
-  const [dateTime, setDateTime] = useState(null);
-  const [format, setFormat] = useState(0);
   const locale = useLocale();
+  const record = useRecordContext();
+  const [value, setValue] = useState(record[source]);
 
-
-  const toggleFormat = () => {
-    const f = format === 1 ? 0 : format+1;
-    setFormat(f);
-  }
 
   useEffect(() => {
-
     moment.locale(locale);
-    const d = moment(record[source]);
-    setDateTime(d);
-
-  }, [locale, record, source])
+    setValue(moment(record[source]).fromNow());
+  }, [locale])
 
 
   return (
-    <span
-      {...props}
-      className={classes.field}
-      onClick={toggleFormat}
-    >
-      {
-        [
-          moment(dateTime).fromNow(),
-          moment(dateTime).format('ll - h:m a'),
-        ]
-        [format]
-      }
-    </span>
+    <FunctionField {...props} render={() => value} />
   );
 }
 
 
 const useStyles = makeStyles(() => ({
-  field: {
-    cursor: 'pointer',
-  }
+
 }))
 
 
