@@ -11,6 +11,7 @@ const config = {
    * 
    */
   LOCAL_AUTH_KEY: 'authToken',
+  LOCAL_WORKSPACE_KEY: 'workspaceId',
   
 
   /**
@@ -40,11 +41,12 @@ const config = {
 }
 
 
-const { LOCAL_AUTH_KEY, api, locales } = config;
+const { LOCAL_AUTH_KEY, LOCAL_WORKSPACE_KEY, api, locales } = config;
 
 export {
   isDev,
   LOCAL_AUTH_KEY,
+  LOCAL_WORKSPACE_KEY,
   host,
   api,
   locales,

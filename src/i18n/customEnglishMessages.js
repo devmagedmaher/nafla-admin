@@ -20,6 +20,10 @@ const customArabicMessages = {
 
   
   resources: {
+    workspaces: {
+      name: 'robots',
+    },
+    
     'dialog-nodes': {
       name: 'Dialogs',
       fields: {

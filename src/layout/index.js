@@ -5,7 +5,6 @@ import Menu from './menu';
 
 
 const CustomLayout = (props) => {
-  console.log(props);
   return (
     <Layout
       {...props}

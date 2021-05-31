@@ -1,4 +1,4 @@
-import { api, LOCAL_AUTH_KEY } from '../constants/config';
+import { api, LOCAL_AUTH_KEY, LOCAL_WORKSPACE_KEY } from '../constants/config';
 import { fetchUtils } from 'react-admin';
 
 
@@ -90,6 +90,13 @@ const authProvider = {
   catch (error) {
     console.log(error);
   }
+
+  /** enject workspace id from localstorage */
+  const ws = localStorage.getItem(LOCAL_WORKSPACE_KEY);
+  if (ws) {
+    options.headers.set('Workspace-Id', ws);
+  }
+
   return fetchUtils.fetchJson(url, options);
 };
 

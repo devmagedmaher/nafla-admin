@@ -10,6 +10,7 @@ import routes from './routes';
 import Layout from "./layout/index";
 import DialogNodeResourceProps from './resources/dialog-nodes';
 import IntentResourceProps from './resources/intents';
+import WorkspacesResourceProps from './resources/workspaces';
 
 
 const App = () => {
@@ -24,6 +25,7 @@ const App = () => {
       authProvider={authProvider}
       i18nProvider={i18nProvider}
     > 
+      <Resource {...WorkspacesResourceProps} />
       <Resource {...DialogNodeResourceProps} />
       <Resource {...IntentResourceProps} />
     </Admin>

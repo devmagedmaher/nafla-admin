@@ -5,6 +5,7 @@ import { useMediaQuery, Divider } from '@material-ui/core';
 import { MenuItemLink, getResources, useTranslate } from 'react-admin';
 import { withRouter } from 'react-router-dom';
 import HomeIcon from '@material-ui/icons/Home';
+import WorkspaceSelector from '../components/workspace-selector';
 
 const Menu = ({ onMenuClick, logout }) => {
   const t = useTranslate();
@@ -12,14 +13,6 @@ const Menu = ({ onMenuClick, logout }) => {
   const open = useSelector(state => state.admin.ui.sidebarOpen);
   const resources = useSelector(getResources);
   return (<>
-    <MenuItemLink
-      to='/'
-      primaryText={t('menu.home')}
-      leftIcon={<HomeIcon />}
-      onClick={onMenuClick}
-      sidebarIsOpen={open}
-    />
-    <Divider />
     {resources.map(resource => (
       <MenuItemLink
         key={resource.name}

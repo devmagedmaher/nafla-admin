@@ -23,9 +23,15 @@ const customArabicMessages = {
       multiline: 'متعدد الأسطر',
     },
   },
-
   
   resources: {
+    workspaces: {
+      name: 'الروبوتات',
+      fields: {
+        name: 'الاسم',
+      },
+    },
+
     'dialog-nodes': {
       name: 'المحادثات',
       fields: {
