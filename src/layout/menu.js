@@ -4,8 +4,7 @@ import { useSelector } from 'react-redux';
 import { useMediaQuery, Divider } from '@material-ui/core';
 import { MenuItemLink, getResources, useTranslate } from 'react-admin';
 import { withRouter } from 'react-router-dom';
-import HomeIcon from '@material-ui/icons/Home';
-import WorkspaceSelector from '../components/workspace-selector';
+
 
 const Menu = ({ onMenuClick, logout }) => {
   const t = useTranslate();
