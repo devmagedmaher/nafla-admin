@@ -7,13 +7,21 @@ import {
 
 
 const WorkspaceList = props => {
-  const [localWorkspace, setLocalWorkspace] = useState(null);
+  const [localWorkspace, setLocalWorkspace] = useState({});
 
 
   useEffect(() => {
     const workspace = window.localStorage.getItem(LOCAL_WORKSPACE_KEY);
     if (workspace) {
-      setLocalWorkspace(workspace);
+
+      try {
+        const ws = JSON.parse(workspace);
+        setLocalWorkspace(ws);
+      }
+      catch(error) {
+        console.log(error);
+      }
+
     }
   }, [])
 
@@ -27,7 +35,7 @@ const WorkspaceList = props => {
       <SimpleList 
         primaryText={record => record.name}
         rowStyle={record => ({
-          backgroundColor: localWorkspace === record.id ? '#dfd' : '#fff',
+          backgroundColor: localWorkspace.id === record.id ? '#dfd' : '#fff',
         })}
         linkType='show'
       />

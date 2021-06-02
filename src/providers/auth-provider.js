@@ -91,10 +91,18 @@ const authProvider = {
     console.log(error);
   }
 
-  /** enject workspace id from localstorage */
-  const ws = localStorage.getItem(LOCAL_WORKSPACE_KEY);
-  if (ws) {
-    options.headers.set('Workspace-Id', ws);
+  /** inject workspace id from localstorage */
+  const workspace = window.localStorage.getItem(LOCAL_WORKSPACE_KEY);
+  if (workspace) {
+
+    try {
+      const { id } = JSON.parse(workspace);
+      options.headers.set('Workspace-Id', id);
+    }
+    catch(error) {
+      console.log(error);
+    }
+
   }
 
   return fetchUtils.fetchJson(url, options);
