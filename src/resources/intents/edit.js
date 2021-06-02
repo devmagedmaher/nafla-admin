@@ -14,34 +14,28 @@ const DialogNodeEdit = (props) => {
   const t = useTranslate();
 
 
+  const transform = data => {
+    data.examples = data.examples.filter(val => !!val);
+
+    return data;
+  }
+
+
   return (
-    <Edit {...props} mutationMode='pessimistic'>
+    <Edit {...props} mutationMode='pessimistic' transform={transform}>
       <TabbedForm>
         <FormTab label={t('resources.intents.tabs.general')}>
           <TextInput source="intent" />
           <TextInput source="description" />
         </FormTab>
         <FormTab label={t('resources.intents.tabs.examples')}>
-          <ArrayInput source="examples">
+          <ArrayInput source="examples" label=''>
             <SimpleFormIterator>
               <TextInput source="text" />
             </SimpleFormIterator>
           </ArrayInput>
         </FormTab>
       </TabbedForm>
-    </Edit>
-  )
-  return (
-    <Edit {...props} mutationMode='pessimistic'>
-      <SimpleForm submitOnEnter={false}>
-        <TextInput source="intent" />
-        <TextInput source="description" />
-        <ArrayInput source="examples">
-          <SimpleFormIterator>
-            <TextInput source="text" />
-          </SimpleFormIterator>
-        </ArrayInput>
-      </SimpleForm>
     </Edit>
   );
 }
