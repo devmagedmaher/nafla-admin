@@ -5,6 +5,7 @@ import {
   ReferenceInput,
   SelectInput,
   TextInput,
+  AutocompleteInput,
 } from 'react-admin';
 
 
@@ -22,7 +23,8 @@ const DialogNodeCreate = (props) => {
           sort={{ field: 'updated', order: 'DESC' }}
           reference="intents"
         >
-          <SelectInput optionText='intent' optionValue='id' />
+          {/* <SelectInput optionText='intent' optionValue='id' /> */}
+          <AutocompleteInput optionText='intent' optionValue='id' />
         </ReferenceInput>
       </SimpleForm>
     </Create>

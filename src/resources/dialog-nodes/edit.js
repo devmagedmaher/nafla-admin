@@ -9,7 +9,8 @@ import {
   ArrayInput,
   useTranslate,
   TabbedForm,
-  FormTab,  
+  FormTab,
+  AutocompleteInput,  
 } from 'react-admin';
 
 const DialogNodeEdit = (props) => {
@@ -28,10 +29,11 @@ const DialogNodeEdit = (props) => {
             sort={{ field: 'updated' }}
             reference="intents"
           >
-            <SelectInput optionText='intent' optionValue='id' />
+            {/* <SelectInput optionText='intent' optionValue='id' /> */}
+            <AutocompleteInput optionText='intent' optionValue='id' />
           </ReferenceInput>
 
-          <SelectInput source="respond.response_type" choices={[
+          <SelectInput source="respond.response_type" value='text' choices={[
             { id: 'text', name: t('choices.response_type.text') },
           ]} />
           <SelectInput source="respond.selection_policy" choices={[
