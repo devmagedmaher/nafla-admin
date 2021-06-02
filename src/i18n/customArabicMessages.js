@@ -37,6 +37,7 @@ const customArabicMessages = {
       fields: {
         title: 'العنوان',
         description: 'الوصف',
+        visible_to_user: 'ظاهر للمستخدم؟',
         conditions: 'شرط حدوث الرد',
         created: 'تاريخ الإنشاء',
         updated: 'تاريخ آخر تحديث',

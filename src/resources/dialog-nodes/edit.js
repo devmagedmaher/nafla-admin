@@ -10,7 +10,8 @@ import {
   useTranslate,
   TabbedForm,
   FormTab,
-  AutocompleteInput,  
+  AutocompleteInput,
+  BooleanInput,  
 } from 'react-admin';
 
 const DialogNodeEdit = (props) => {
@@ -33,6 +34,8 @@ const DialogNodeEdit = (props) => {
         <FormTab label={t('resources.dialog-nodes.tabs.general')}>
           <TextInput source="title" lable='resources.intents.fields.title' />
           <TextInput source="description" />
+
+          <BooleanInput label="resources.dialog-nodes.fields.visible_to_user" source="metadata.visible" />
 
           <ReferenceInput
             source='conditions'

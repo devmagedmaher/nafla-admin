@@ -5,6 +5,7 @@ import {
   TextField,
   EditButton,
   SimpleList,
+  BooleanField,
 } from 'react-admin';
 import { useMediaQuery } from '@material-ui/core';
 import TimeAgoField from '../../components/time-ago-field';
@@ -31,6 +32,7 @@ const DialogNodeList = props => {
       ) : (
         <Datagrid rowClick='edit'>
           <TextField source="title" sortable={false} />
+          <BooleanField label='resources.dialog-nodes.fields.visible_to_user' source="metadata.visible" sortable={false} />
           <TimeAgoField source="created" sortable={false} />,
           <TimeAgoField source="updated" />,
           <EditButton />
