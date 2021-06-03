@@ -13,6 +13,8 @@ import {
   AutocompleteInput,
   BooleanInput,  
 } from 'react-admin';
+import ConditionInput from '../../components/condition-input';
+
 
 const DialogNodeEdit = (props) => {
   const t = useTranslate();
@@ -37,20 +39,16 @@ const DialogNodeEdit = (props) => {
 
           <BooleanInput label="resources.dialog-nodes.fields.visible_to_user" source="metadata.visible" />
 
-          <ReferenceInput
+          <SelectInput source='condition_type' choices={[
+            { id: 'common', name: 'Common' },
+            { id: 'intent', name: 'Intent' },
+          ]} />
+
+          <ConditionInput
             source='conditions'
             sort={{ field: 'updated' }}
             reference="intents"
-          >
-            {/* <SelectInput optionText='intent' optionValue='id' /> */}
-            <AutocompleteInput
-              optionText='intent'
-              optionValue='id'
-              clearAlwaysVisible
-              resettable
-              allowEmpty
-            />
-          </ReferenceInput>
+          />            
 
           {/* <SelectInput source="respond.response_type" value='text' choices={[
             { id: 'text', name: t('choices.response_type.text') },
