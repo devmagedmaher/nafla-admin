@@ -1,7 +1,7 @@
 
 
 const isDev = process.env.NODE_ENV !== "production";
-const host = isDev ? 'http://192.168.1.97:3001' : '';
+const host = isDev ? 'http://192.168.1.97:3001' : ':3001';
 
 
 const config = {
